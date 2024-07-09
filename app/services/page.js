@@ -63,7 +63,7 @@ const services = () => {
           </p>
         </div> 
       </div>
-    </section>
+    </section> 
   );
 };
 
