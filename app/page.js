@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <Tax />
-      <Join />
+      {/* <Tax /> */}
+      {/* <Join /> */}
     </div>
   );
 }

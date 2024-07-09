@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="flex justify-between px-9 items-center w-full h-full">
         {/* <Image src='' alt='' /> */}
         <h1 className="font-bold text-4xl pb-3 text-white">
-          Deloitte<span className="text-green-500 font-bold text-6xl">.</span>
+          TTC<span className="text-green-500 font-bold text-6xl">.</span>
         </h1>
 
         <div className="pt-2 px-7">
@@ -30,9 +30,9 @@ const Navbar = () => {
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b border-green-600">Home</li>
             </Link>
-            <Link href="/about">
+            {/* <Link href="/about">
               <li className="ml-10 text-sm uppercase hover:border-b border-green-600">About</li>
-            </Link>
+            </Link> */}
             <Link href="/services">
               <li className="ml-10 text-sm uppercase hover:border-b border-green-600">
                 Services
@@ -72,9 +72,9 @@ const Navbar = () => {
                 <Link href='/'>
                   <li onClick={() => setNav(false)} className="py-8 text-black text-sm border-b border-gray-300">Home</li>
                 </Link>
-                <Link href='/about'>
+                {/* <Link href='/about'>
                   <li onClick={() => setNav(false)} className="py-8 text-black text-sm border-b border-gray-300">About</li>
-                </Link>
+                </Link> */}
                 <Link href='/services'>
                   <li onClick={() => setNav(false)} className="py-8 text-black text-sm border-b border-gray-300">Services</li>
                 </Link>

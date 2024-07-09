@@ -26,7 +26,7 @@ const contact = () => {
             id="name"
             required
             className="bg-[#18191e] border border-[#33353f] placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-            placeholder="Tochukwu"
+            placeholder="John"
           />
          </div>
            <div className="mb-6">
@@ -38,7 +38,7 @@ const contact = () => {
             id="name"
             required
             className="bg-[#18191e] border border-[#33353f] placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-            placeholder="Owunwanne"
+            placeholder="Doe"
           />
            </div>
            <div className="mb-6">
@@ -74,7 +74,7 @@ const contact = () => {
             id="number"
             required
             className="bg-[#18191e] border border-[#33353f] placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-            placeholder="+2348061668461"
+            placeholder="+2348011122333"
           />
           </div>
 

@@ -4,8 +4,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='w-full bg-[#181616] mt-9 text-gray-300 px-2'>
-      <div className='max-w-[1240px] mx-auto grid md:grid-cols-4 border-b-2 border-gray-200 py-8'>
+    <footer className='w-full bg-[#181616] mt-[9.5rem] text-gray-300 px-2'>
+      {/* <div className='max-w-[1240px] mx-auto grid md:grid-cols-4 border-b-2 border-gray-200 py-8'>
         <div className='hidden md:block'>
           <h1 className='font-bold uppercase pt-2 mb-2'>Solution</h1>
           <ul>
@@ -45,10 +45,10 @@ const Footer = () => {
             <li className='py-1'>Policies</li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
       <div>
-        <p className='text-center py-4'>All rights reserved 2023, created by Tochukwu Owunwanne</p>
+        <p className='text-center py-4'>All rights reserved 2023, created by TOJ</p>
       </div>
     </footer>
   )
