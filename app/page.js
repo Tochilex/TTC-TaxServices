@@ -1,15 +1,17 @@
-import Hero from "@/components/Hero";
-import Join from "@/components/Join";
-import Navbar from "@/components/Navbar";
-import Tax from "@/components/Tax";
-
+import HeroSection from "@/components/HeroSection"
+import StatsBar from "@/components/StatsBar"
+import ServicesPreview from "@/components/ServicesPreview"
+import WhyUsSection from "@/components/WhyUsSection"
+import CTABanner from "@/components/CTABanner"
 
 export default function Home() {
   return (
     <div>
-      <Hero />
-      {/* <Tax /> */}
-      {/* <Join /> */}
+      <HeroSection />
+      <StatsBar />
+      <ServicesPreview />
+      <WhyUsSection />
+      <CTABanner />
     </div>
-  );
+  )
 }
