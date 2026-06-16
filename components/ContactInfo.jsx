@@ -4,13 +4,13 @@ const infoItems = [
   {
     icon: <FiMail />,
     label: "Email",
-    value: "info@ttcservices.com",
+    value: "Contact the TTC team",
     href: "mailto:info@ttcservices.com",
   },
   {
     icon: <FiPhone />,
     label: "Phone",
-    value: "+234 (0) 000 0000",
+    value: "Contact the TTC team",
     href: "tel:+2340000000000",
   },
   {
@@ -53,20 +53,18 @@ const ContactInfo = () => {
       <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
         <p className="text-gray-400 text-sm mb-4">Follow us</p>
         <div className="flex gap-3">
-          <a
-            href="#"
-            className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-gray-400 hover:text-teal-400 hover:border-teal-500/30 transition-all duration-200"
+          <span
+            className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-gray-600 cursor-not-allowed"
             aria-label="LinkedIn"
           >
             <FiLinkedin size={18} />
-          </a>
-          <a
-            href="#"
-            className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-gray-400 hover:text-teal-400 hover:border-teal-500/30 transition-all duration-200"
+          </span>
+          <span
+            className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-gray-600 cursor-not-allowed"
             aria-label="Twitter"
           >
             <FiTwitter size={18} />
-          </a>
+          </span>
         </div>
       </div>
     </div>

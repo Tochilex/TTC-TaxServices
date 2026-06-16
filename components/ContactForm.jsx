@@ -96,7 +96,8 @@ const ContactForm = () => {
 
         <button
           type="button"
-          className="w-full py-3.5 bg-teal-500 hover:bg-teal-400 text-white font-medium rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-teal-500/25"
+          disabled
+          className="w-full py-3.5 bg-teal-500/40 text-white/50 font-medium rounded-xl cursor-not-allowed"
         >
           Send Message
         </button>

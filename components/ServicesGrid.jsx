@@ -4,6 +4,8 @@ import {
   HiOutlineCalculator,
   HiOutlineChartBar,
   HiOutlineDocumentText,
+  HiOutlineClipboardList,
+  HiOutlineChartPie,
 } from "react-icons/hi"
 import ServiceCard from "./ServiceCard"
 
@@ -72,6 +74,32 @@ const services = [
       "End-to-end implementation support",
     ],
     tag: "E-Invoicing",
+  },
+  {
+    icon: <HiOutlineClipboardList />,
+    title: "WHT Receipt Generator",
+    description:
+      "Automatically generates accurate Withholding Tax receipts and documentation for remittances, providing a seamless audit trail and eliminating manual paperwork for tax professionals.",
+    features: [
+      "Automated receipt generation",
+      "WHT schedule tracking",
+      "Bulk processing support",
+      "Printable & exportable formats",
+    ],
+    tag: "WHT",
+  },
+  {
+    icon: <HiOutlineChartPie />,
+    title: "Interest Expense Analyser",
+    description:
+      "Cuts through the complexities of manual interest analysis by computing and evaluating deductible interest expenses against tax authority thin capitalisation rules — recommended for financial institutions.",
+    features: [
+      "Thin capitalisation analysis",
+      "Deductible interest computation",
+      "Financial institution support",
+      "Regulatory compliance checks",
+    ],
+    tag: "Analytics",
   },
 ]
 
