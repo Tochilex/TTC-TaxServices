@@ -17,58 +17,62 @@ const Navbar = () => {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0a0f1e]/80 backdrop-blur-md border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/">
-          <h1 className="text-white font-bold text-3xl leading-none">
-            TTC<span className="text-teal-400 text-4xl">.</span>
-          </h1>
-        </Link>
+    <>
+      <nav className="fixed top-0 w-full z-50 bg-[#0a0f1e]/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/">
+            <h1 className="text-white font-bold text-3xl leading-none">
+              TTC<span className="text-teal-400 text-4xl">.</span>
+            </h1>
+          </Link>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map(({ href, label }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className={`text-sm uppercase tracking-wider transition-colors duration-200 ${
-                  pathname === href
-                    ? "text-teal-400 border-b border-teal-400 pb-0.5"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          {/* Desktop Links */}
+          <ul className="hidden md:flex items-center gap-8">
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={`text-sm uppercase tracking-wider transition-colors duration-200 ${
+                    pathname === href
+                      ? "text-teal-400 border-b border-teal-400 pb-0.5"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        {/* CTA Button */}
-        <Link href="/contact" className="hidden md:block">
-          <button className="px-5 py-2 bg-teal-500 hover:bg-teal-400 text-white text-sm font-medium rounded-lg transition-colors duration-200">
-            Get In Touch
+          {/* CTA Button */}
+          <Link href="/contact" className="hidden md:block">
+            <button className="px-5 py-2 bg-teal-500 hover:bg-teal-400 text-white text-sm font-medium rounded-lg transition-colors duration-200">
+              Get In Touch
+            </button>
+          </Link>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setNav(true)}
+            className="md:hidden text-gray-300 hover:text-white transition-colors"
+            aria-label="Open menu"
+          >
+            <AiOutlineMenu size={24} />
           </button>
-        </Link>
+        </div>
+      </nav>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setNav(true)}
-          className="md:hidden text-gray-300 hover:text-white transition-colors"
-          aria-label="Open menu"
-        >
-          <AiOutlineMenu size={24} />
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer — outside <nav> to avoid backdrop-blur inheritance */}
       {nav && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-[200] md:hidden">
+          {/* Overlay */}
           <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60"
             onClick={() => setNav(false)}
           />
-          <div className="absolute left-0 top-0 h-full w-72 bg-[#0f172a] border-r border-white/10 p-6 flex flex-col">
+          {/* Drawer panel */}
+          <div className="absolute left-0 top-0 h-full w-72 bg-[#0a0f1e] border-r border-white/10 p-6 flex flex-col" style={{ isolation: "isolate" }}>
             <div className="flex items-center justify-between mb-10">
               <h1 className="text-white font-bold text-2xl leading-none">
                 TTC<span className="text-teal-400 text-3xl">.</span>
@@ -110,7 +114,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </>
   )
 }
 
