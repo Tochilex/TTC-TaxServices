@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
 ]
 
 const Navbar = () => {
@@ -44,13 +43,6 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-
-          {/* CTA Button */}
-          <Link href="/contact" className="hidden md:block">
-            <button className="px-5 py-2 bg-teal-500 hover:bg-teal-400 text-white text-sm font-medium rounded-lg transition-colors duration-200">
-              Get In Touch
-            </button>
-          </Link>
 
           {/* Mobile Hamburger */}
           <button
@@ -104,13 +96,6 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <div className="mt-auto">
-              <Link href="/contact" onClick={() => setNav(false)}>
-                <button className="w-full py-3 bg-teal-500 hover:bg-teal-400 text-white text-sm font-medium rounded-lg transition-colors duration-200">
-                  Get In Touch
-                </button>
-              </Link>
-            </div>
           </div>
         </div>
       )}

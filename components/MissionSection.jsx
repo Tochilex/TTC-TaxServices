@@ -1,58 +1,48 @@
-import Image from "next/image"
-
 const MissionSection = () => {
   return (
-    <section className="py-24 bg-[#0a0f1e]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-          {/* Image */}
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-indigo-500/10 rounded-3xl blur-xl pointer-events-none" />
-            <div className="relative rounded-2xl overflow-hidden border border-white/10">
-              <Image
-                src="/images/AboutImg.jpg"
-                alt="About TTC Services"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
-            </div>
+    <section className="py-20 bg-[#0a0f1e]">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-12">
+          <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
+            About the Team
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
+            Who We Are
+          </h2>
+          <p className="text-gray-400 leading-relaxed max-w-3xl">
+            The right technology can make your tax department more efficient and effective.
+            Streamlining and automating processes frees tax professionals to focus on high-value work,
+            while bringing accuracy, transparency, and control to your tax function.
+            Whether you need to evaluate tax policy, integrate systems, or implement digital tools,
+            TTC has the expertise to help at every stage.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-teal-500/60">
+            <h3 className="text-white font-semibold text-base mb-3">What We Do</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We design, build, and maintain digital tax tools that automate complex tax processes,
+              reduce manual effort, and improve the accuracy of compliance outputs across the organisation.
+            </p>
           </div>
 
-          {/* Content */}
-          <div>
-            <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
-              Who We Are
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-indigo-500/60">
+            <h3 className="text-white font-semibold text-base mb-3">How We Help</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              From payroll and VAT automation to CBC reporting and e-invoicing, our solutions are built
+              to solve real tax challenges, giving teams more time to focus on insights and decisions.
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
-              Pioneering Digital Tax Transformation
-            </h2>
+          </div>
 
-            <div className="space-y-7">
-              <div className="border-l-2 border-teal-500/50 pl-6">
-                {/* <h3 className="text-white font-semibold text-lg mb-2">Our Mission</h3> */}
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  To empower businesses with intelligent tax technology that simplifies compliance,
-                  improves accuracy, and enables smarter decision-making across every tax function.
-                </p>
-              </div>
-              <div className="border-l-2 border-indigo-500/50 pl-6">
-                {/* <h3 className="text-white font-semibold text-lg mb-2">Our Vision</h3> */}
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  To be the leading provider of digital tax solutions in Africa, connecting
-                  expertise with technology to build the future of compliant, efficient, and
-                  transparent tax operations.
-                </p>
-              </div>
-              <div className="border-l-2 border-teal-500/50 pl-6">
-                {/* <h3 className="text-white font-semibold text-lg mb-2">Our Approach</h3> */}
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  We combine deep tax expertise with modern technology to deliver solutions that
-                  work — whether you need to evaluate strategy, integrate systems, or implement
-                  digital tools at any stage of your transformation.
-                </p>
-              </div>
-            </div>
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-teal-500/60">
+            <h3 className="text-white font-semibold text-base mb-3">Our Focus</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We are committed to staying ahead of evolving regulatory requirements, ensuring every
+              tool we deliver is aligned with FIRS, OECD, and applicable international tax standards.
+            </p>
           </div>
         </div>
       </div>

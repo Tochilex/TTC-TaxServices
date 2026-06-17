@@ -1,7 +1,6 @@
 import PageHeader from "@/components/PageHeader"
 import ServicesGrid from "@/components/ServicesGrid"
 import HowItWorks from "@/components/HowItWorks"
-import CTABanner from "@/components/CTABanner"
 
 export default function Services() {
   return (
@@ -13,7 +12,6 @@ export default function Services() {
       />
       <ServicesGrid />
       <HowItWorks />
-      <CTABanner />
     </div>
   )
 }

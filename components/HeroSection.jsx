@@ -13,7 +13,7 @@ const HeroSection = () => {
         {/* Tag pill */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/5 text-teal-400 text-sm font-medium mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-          Tax Technology Platform
+          Tax Transformation Consulting
         </div>
 
         {/* Heading */}
@@ -33,17 +33,12 @@ const HeroSection = () => {
           transparency, and control to your tax function.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* CTA */}
+        <div className="flex items-center justify-center">
           <Link href="/services">
-            <button className="flex items-center gap-2 px-7 py-3.5 bg-teal-500 hover:bg-teal-400 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-teal-500/25 w-full sm:w-auto justify-center">
+            <button className="flex items-center gap-2 px-7 py-3.5 bg-teal-500 hover:bg-teal-400 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-teal-500/25">
               Explore Services
               <FiArrowRight size={16} />
-            </button>
-          </Link>
-          <Link href="/contact">
-            <button className="px-7 py-3.5 border border-white/20 hover:border-white/40 text-white font-medium rounded-lg transition-all duration-200 hover:bg-white/5 w-full sm:w-auto">
-              Contact Us
             </button>
           </Link>
         </div>

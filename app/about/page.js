@@ -1,7 +1,6 @@
 import PageHeader from "@/components/PageHeader"
 import MissionSection from "@/components/MissionSection"
 import ValuesSection from "@/components/ValuesSection"
-import CTABanner from "@/components/CTABanner"
 
 export default function About() {
   return (
@@ -13,7 +12,6 @@ export default function About() {
       />
       <MissionSection />
       <ValuesSection />
-      <CTABanner />
     </div>
   )
 }
