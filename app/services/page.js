@@ -7,7 +7,7 @@ export default function Services() {
     <div>
       <PageHeader
         title="Our Services"
-        description="End-to-end digital tax solutions designed to simplify compliance, automate workflows, and empower your tax function."
+        description="End-to-end digital tax solutions designed to simplify compliance, automate workflows, and empower tax functions."
         breadcrumb="Services"
       />
       <ServicesGrid />

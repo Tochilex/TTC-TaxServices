@@ -7,15 +7,15 @@ const MissionSection = () => {
           <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
             About the Team
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
+          {/* <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
             Who We Are
-          </h2>
+          </h2> */}
           <p className="text-gray-400 leading-relaxed max-w-3xl">
-            The right technology can make your tax department more efficient and effective.
-            Streamlining and automating processes frees tax professionals to focus on high-value work,
-            while bringing accuracy, transparency, and control to your tax function.
-            Whether you need to evaluate tax policy, integrate systems, or implement digital tools,
-            TTC has the expertise to help at every stage.
+            The right technology makes tax processes more efficient, freeing
+professionals to focus on high-value work while bringing accuracy,
+transparency, and control to the tax function. TTC has the expertise
+to help, whether evaluating tax policy, integrating systems, or
+implementing digital tools.
           </p>
         </div>
 

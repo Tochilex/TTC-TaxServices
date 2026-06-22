@@ -35,7 +35,7 @@ const ValuesSection = () => {
           <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
             How We Operate
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Core Principles</h2>
+          {/* <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Core Principles</h2> */}
           <p className="text-gray-400 max-w-xl">
             The principles that guide how we build, deliver, and support every solution.
           </p>
