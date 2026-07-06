@@ -1,10 +1,10 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 
 const PageHeader = ({ title, description, breadcrumb }) => {
   return (
-    <section className="relative pt-36 pb-16 bg-[#0a0f1e] overflow-hidden">
+    <section className="relative pt-36 pb-16 bg-black overflow-hidden">
       {/* Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-teal-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#86BC25]/5 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {breadcrumb && (
@@ -13,7 +13,7 @@ const PageHeader = ({ title, description, breadcrumb }) => {
               Home
             </Link>
             <span>/</span>
-            <span className="text-teal-400">{breadcrumb}</span>
+            <span className="text-[#86BC25]">{breadcrumb}</span>
           </div>
         )}
 

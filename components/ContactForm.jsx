@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 
@@ -16,7 +16,7 @@ const ContactForm = () => {
   }
 
   const inputClass =
-    "w-full bg-white/[0.03] border border-white/10 text-gray-100 text-sm rounded-xl px-4 py-3 placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all duration-200"
+    "w-full bg-white/[0.03] border border-white/10 text-gray-100 text-sm rounded-xl px-4 py-3 placeholder-gray-600 focus:outline-none focus:border-[#86BC25]/50 focus:bg-white/[0.05] transition-all duration-200"
   const labelClass = "block text-sm font-medium text-gray-300 mb-2"
 
   return (
@@ -26,7 +26,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label className={labelClass}>
-              Full Name <span className="text-teal-400">*</span>
+              Full Name <span className="text-[#86BC25]">*</span>
             </label>
             <input
               type="text"
@@ -40,7 +40,7 @@ const ContactForm = () => {
           </div>
           <div>
             <label className={labelClass}>
-              Email <span className="text-teal-400">*</span>
+              Email <span className="text-[#86BC25]">*</span>
             </label>
             <input
               type="email"
@@ -81,7 +81,7 @@ const ContactForm = () => {
 
         <div>
           <label className={labelClass}>
-            Message <span className="text-teal-400">*</span>
+            Message <span className="text-[#86BC25]">*</span>
           </label>
           <textarea
             name="message"
@@ -97,7 +97,7 @@ const ContactForm = () => {
         <button
           type="button"
           disabled
-          className="w-full py-3.5 bg-teal-500/40 text-white/50 font-medium rounded-xl cursor-not-allowed"
+          className="w-full py-3.5 bg-[#86BC25]/40 text-white/50 font-medium rounded-xl cursor-not-allowed"
         >
           Send Message
         </button>

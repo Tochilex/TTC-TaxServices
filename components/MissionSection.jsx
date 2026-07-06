@@ -1,10 +1,10 @@
-const MissionSection = () => {
+﻿const MissionSection = () => {
   return (
-    <section className="py-20 bg-[#0a0f1e]">
+    <section className="py-20 bg-black">
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <div className="mb-12">
-          <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
+          <p className="text-[#86BC25] text-sm font-medium uppercase tracking-wider mb-3">
             About the Team
           </p>
           {/* <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
@@ -21,7 +21,7 @@ implementing digital tools.
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-teal-500/60">
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-[#86BC25]/60">
             <h3 className="text-white font-semibold text-base mb-3">What We Do</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               We design, build, and maintain digital tax tools that automate complex tax processes,
@@ -29,7 +29,7 @@ implementing digital tools.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-indigo-500/60">
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-white/60">
             <h3 className="text-white font-semibold text-base mb-3">How We Help</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               From payroll and VAT automation to CBC reporting and e-invoicing, our solutions are built
@@ -37,11 +37,11 @@ implementing digital tools.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-teal-500/60">
+          <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] border-t-2 border-t-[#86BC25]/60">
             <h3 className="text-white font-semibold text-base mb-3">Our Focus</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               We are committed to staying ahead of evolving regulatory requirements, ensuring every
-              tool we deliver is aligned with FIRS, OECD, and applicable international tax standards.
+              tool we deliver is aligned with NRS, OECD, and applicable international tax standards.
             </p>
           </div>
         </div>

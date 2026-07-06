@@ -24,6 +24,7 @@ const services = [
       "A comprehensive HR payroll management solution that handles statutory deductions, employee records, and payroll computations with precision and ease.",
     features: ["Statutory deductions", "Employee records", "Payslip generation", "Pension & tax integration"],
     tag: "Payroll",
+    href: "https://neptune.deloitte.com.ng",
   },
   {
     icon: <HiOutlineCalculator />,
@@ -40,13 +41,14 @@ const services = [
       "A cloud-based financial reporting and workflow platform that connects accounting data to enable seamless tax compliance and financial close processes.",
     features: ["Cloud collaboration", "Financial templates", "Compliance checklists", "Real-time data sync"],
     tag: "Reporting",
+    href: "https://silverfin.com/",
   },
   {
     icon: <HiOutlineDocumentText />,
     title: "E-Invoicing Implementation",
     description:
-      "Guides businesses through the setup and integration of compliant e-invoicing systems, fully aligned with FIRS requirements and international standards.",
-    features: ["FIRS-compliant integration", "Invoice validation", "ERP system integration", "End-to-end support"],
+      "Guides businesses through the setup and integration of compliant e-invoicing systems, fully aligned with NRS requirements and international standards.",
+    features: ["NRS-compliant integration", "Invoice validation", "ERP system integration", "End-to-end support"],
     tag: "E-Invoicing",
   },
   {
@@ -69,51 +71,62 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-12 bg-[#0a0f1e]">
+    <section className="py-12 bg-black">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service, i) => (
-            <div
-              key={i}
-              className="group relative flex flex-col rounded-2xl bg-white/[0.03] border border-white/[0.07] p-6 hover:border-teal-500/30 hover:bg-white/[0.05] transition-all duration-300 overflow-hidden"
-            >
-              {/* Top glow line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {services.map((service, i) => {
+            const cardContent = (
+              <>
+                {/* Top glow line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#86BC25]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Watermark number */}
-              <span className="absolute bottom-3 right-5 text-[64px] font-black text-white/[0.03] select-none tabular-nums leading-none pointer-events-none">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              {/* Header row */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 text-xl">
-                  {service.icon}
-                </div>
-                <span className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
-                  {service.tag}
+                {/* Watermark number */}
+                <span className="absolute bottom-3 right-5 text-[64px] font-black text-white/[0.03] select-none tabular-nums leading-none pointer-events-none">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-              </div>
 
-              {/* Title */}
-              <h3 className="text-white font-semibold text-base mb-2">{service.title}</h3>
-
-              {/* Description */}
-              <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
-                {service.description}
-              </p>
-
-              {/* Features */}
-              <div className="space-y-1.5">
-                {service.features.map((f, j) => (
-                  <div key={j} className="flex items-center gap-2 text-xs text-gray-500">
-                    <span className="w-1 h-1 rounded-full bg-teal-400/40 flex-shrink-0" />
-                    {f}
+                {/* Header row */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-xl">
+                    {service.icon}
                   </div>
-                ))}
+                  <span className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-[#86BC25]/10 text-[#86BC25] border border-[#86BC25]/20">
+                    {service.tag}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-white font-semibold text-base mb-2">{service.title}</h3>
+
+                {/* Description */}
+                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
+                  {service.description}
+                </p>
+
+                {/* Features */}
+                <div className="space-y-1.5">
+                  {service.features.map((f, j) => (
+                    <div key={j} className="flex items-center gap-2 text-xs text-gray-500">
+                      <span className="w-1 h-1 rounded-full bg-[#86BC25]/40 flex-shrink-0" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )
+
+            const className = "group relative flex flex-col rounded-2xl bg-black border border-white/[0.07] p-6 hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300 overflow-hidden h-full"
+
+            return service.href ? (
+              <a key={i} href={service.href} target="_blank" rel="noopener noreferrer" className={className}>
+                {cardContent}
+              </a>
+            ) : (
+              <div key={i} className={className}>
+                {cardContent}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

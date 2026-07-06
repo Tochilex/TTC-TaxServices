@@ -1,4 +1,4 @@
-import { FiZap, FiCheckCircle, FiShield } from "react-icons/fi"
+﻿import { FiZap, FiCheckCircle, FiShield } from "react-icons/fi"
 
 const features = [
   {
@@ -17,16 +17,16 @@ const features = [
     icon: <FiShield />,
     title: "Compliance Ready",
     description:
-      "Stay audit-ready with tools designed around regulatory standards and built to meet FIRS and OECD requirements.",
+      "Stay audit-ready with tools designed around regulatory standards and built to meet NRS and OECD requirements.",
   },
 ]
 
 const WhyUsSection = () => {
   return (
-    <section className="py-24 bg-[#0f172a]">
+    <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          {/* <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
+          {/* <p className="text-[#86BC25] text-sm font-medium uppercase tracking-wider mb-3">
             Why Choose Us
           </p> */}
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -41,9 +41,9 @@ const WhyUsSection = () => {
           {features.map(({ icon, title, description }, i) => (
             <div
               key={i}
-              className="text-center p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-teal-500/30 transition-colors duration-300"
+              className="text-center p-8 rounded-2xl bg-black border border-white/[0.06] hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 text-2xl mx-auto mb-5">
+              <div className="w-14 h-14 rounded-2xl bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-2xl mx-auto mb-5">
                 {icon}
               </div>
               <h3 className="text-white text-lg font-semibold mb-3">{title}</h3>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -17,12 +17,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0f1e]/80 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
             <h1 className="text-white font-bold text-3xl leading-none">
-              TTC<span className="text-teal-400 text-4xl">.</span>
+              TTC<span className="text-[#86BC25] text-4xl">.</span>
             </h1>
           </Link>
 
@@ -34,7 +34,7 @@ const Navbar = () => {
                   href={href}
                   className={`text-sm uppercase tracking-wider transition-colors duration-200 ${
                     pathname === href
-                      ? "text-teal-400 border-b border-teal-400 pb-0.5"
+                      ? "text-[#86BC25] border-b border-[#86BC25] pb-0.5"
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
@@ -64,10 +64,10 @@ const Navbar = () => {
             onClick={() => setNav(false)}
           />
           {/* Drawer panel */}
-          <div className="absolute left-0 top-0 h-full w-72 bg-[#0a0f1e] border-r border-white/10 p-6 flex flex-col" style={{ isolation: "isolate" }}>
+          <div className="absolute left-0 top-0 h-full w-72 bg-black border-r border-white/10 p-6 flex flex-col" style={{ isolation: "isolate" }}>
             <div className="flex items-center justify-between mb-10">
               <h1 className="text-white font-bold text-2xl leading-none">
-                TTC<span className="text-teal-400 text-3xl">.</span>
+                TTC<span className="text-[#86BC25] text-3xl">.</span>
               </h1>
               <button
                 onClick={() => setNav(false)}
@@ -86,7 +86,7 @@ const Navbar = () => {
                     onClick={() => setNav(false)}
                     className={`block py-3 px-4 rounded-lg text-sm uppercase tracking-wider transition-colors duration-200 ${
                       pathname === href
-                        ? "bg-teal-500/10 text-teal-400"
+                        ? "bg-[#86BC25]/10 text-[#86BC25]"
                         : "text-gray-300 hover:bg-white/5 hover:text-white"
                     }`}
                   >

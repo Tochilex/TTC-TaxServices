@@ -1,4 +1,4 @@
-import { FiTarget, FiCpu, FiShield, FiHeart } from "react-icons/fi"
+﻿import { FiTarget, FiCpu, FiShield, FiHeart } from "react-icons/fi"
 
 const principles = [
   {
@@ -17,7 +17,7 @@ const principles = [
     icon: <FiShield />,
     title: "Compliance",
     description:
-      "Our solutions are designed from the ground up to align with FIRS, OECD, and international compliance standards.",
+      "Our solutions are designed from the ground up to align with NRS, OECD, and international compliance standards.",
   },
   {
     icon: <FiHeart />,
@@ -29,10 +29,10 @@ const principles = [
 
 const ValuesSection = () => {
   return (
-    <section className="py-20 bg-[#0f172a]">
+    <section className="py-20 bg-black">
       <div className="max-w-5xl mx-auto px-6">
         <div className="mb-12">
-          <p className="text-teal-400 text-sm font-medium uppercase tracking-wider mb-3">
+          <p className="text-[#86BC25] text-sm font-medium uppercase tracking-wider mb-3">
             How We Operate
           </p>
           {/* <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Core Principles</h2> */}
@@ -45,9 +45,9 @@ const ValuesSection = () => {
           {principles.map(({ icon, title, description }, i) => (
             <div
               key={i}
-              className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-teal-500/30 transition-colors duration-300"
+              className="p-5 rounded-xl bg-black border border-white/[0.06] hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 text-lg mb-4">
+              <div className="w-10 h-10 rounded-lg bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-lg mb-4">
                 {icon}
               </div>
               <h3 className="text-white font-semibold text-sm mb-2">{title}</h3>

@@ -1,4 +1,4 @@
-import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiTwitter } from "react-icons/fi"
+﻿import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiTwitter } from "react-icons/fi"
 
 const infoItems = [
   {
@@ -29,7 +29,7 @@ const ContactInfo = () => {
         <div className="space-y-6">
           {infoItems.map(({ icon, label, value, href }, i) => (
             <div key={i} className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] flex-shrink-0">
                 {icon}
               </div>
               <div>
@@ -37,7 +37,7 @@ const ContactInfo = () => {
                 {href ? (
                   <a
                     href={href}
-                    className="text-gray-200 hover:text-teal-400 transition-colors duration-200 text-sm font-medium"
+                    className="text-gray-200 hover:text-[#86BC25] transition-colors duration-200 text-sm font-medium"
                   >
                     {value}
                   </a>
