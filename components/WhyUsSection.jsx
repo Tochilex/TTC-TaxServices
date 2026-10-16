@@ -1,53 +1,45 @@
-﻿import { FiZap, FiCheckCircle, FiShield } from "react-icons/fi"
+﻿import { LuZap, LuCheckCircle, LuShield } from "react-icons/lu"
 
-const features = [
+const pillars = [
   {
-    icon: <FiZap />,
-    title: "Speed & Efficiency",
-    description:
-      "Automate repetitive tax workflows to free your team for high-value work and faster decision-making.",
+    icon: LuZap,
+    title: "Speed & efficiency",
+    desc: "Automate repetitive tax workflows to free your team for high-value work and faster decision-making.",
   },
   {
-    icon: <FiCheckCircle />,
-    title: "Accuracy You Can Trust",
-    description:
-      "Eliminate manual errors with precision-built computation engines that deliver consistent, reliable results.",
+    icon: LuCheckCircle,
+    title: "Accuracy you can trust",
+    desc: "Eliminate manual errors with precision-built computation engines that deliver consistent, reliable results.",
   },
   {
-    icon: <FiShield />,
-    title: "Compliance Ready",
-    description:
-      "Stay audit-ready with tools designed around regulatory standards and built to meet NRS and OECD requirements.",
+    icon: LuShield,
+    title: "Compliance ready",
+    desc: "Stay audit-ready with tools designed around regulatory standards and built to meet NRS and OECD requirements.",
   },
 ]
 
 const WhyUsSection = () => {
   return (
-    <section className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          {/* <p className="text-[#86BC25] text-sm font-medium uppercase tracking-wider mb-3">
-            Why Choose Us
-          </p> */}
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Why TTC
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+    <section className="border-t border-line-section bg-surface-alt">
+      <div className="container-page grid grid-cols-[repeat(auto-fit,minmax(min(100%,360px),1fr))] gap-16 py-28">
+        <div className="flex flex-col gap-[18px] self-start md:sticky md:top-28">
+          <span className="eyebrow">Why TTC</span>
+          <h2 className="heading-2 [text-wrap:balance]">Deep tax expertise, built into technology that works.</h2>
+          <p className="m-0 max-w-[440px] text-[17px] leading-[1.55] text-ink-body">
             We combine deep tax expertise with cutting-edge technology to deliver solutions that work.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map(({ icon, title, description }, i) => (
-            <div
-              key={i}
-              className="text-center p-8 rounded-2xl bg-black border border-white/[0.06] hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-2xl mx-auto mb-5">
-                {icon}
+        <div className="flex flex-col border-t border-line-card">
+          {pillars.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="grid grid-cols-[56px_1fr] gap-6 border-b border-line-card py-8">
+              <span className="tile h-14 w-14 rounded-[14px]">
+                <Icon size={22} strokeWidth={1.8} />
+              </span>
+              <div className="flex flex-col gap-2">
+                <h3 className="m-0 text-[22px] font-semibold tracking-[-0.02em]">{title}</h3>
+                <p className="m-0 [text-wrap:pretty]text-base leading-[1.6] text-ink-body">{desc}</p>
               </div>
-              <h3 className="text-white text-lg font-semibold mb-3">{title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
             </div>
           ))}
         </div>

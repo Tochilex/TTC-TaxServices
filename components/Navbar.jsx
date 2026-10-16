@@ -3,103 +3,81 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
+import { LuMenu, LuX } from "react-icons/lu"
+import { ContactTrigger } from "@/components/ContactModal"
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
 ]
 
+const NavLink = ({ href, label, active, onClick }) => (
+  <Link
+    href={href}
+    onClick={onClick}
+    aria-current={active ? "page" : undefined}
+    className={`flex items-center gap-2 whitespace-nowrap rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+      active ? "bg-[#12160F] text-ink" : "text-ink-body hover:bg-[#0E110C] hover:text-ink"
+    }`}
+  >
+    {active && <span className="h-[5px] w-[5px] rounded-full bg-accent" />}
+    {label}
+  </Link>
+)
+
 const Navbar = () => {
-  const [nav, setNav] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <>
-      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/">
-            <h1 className="text-white font-bold text-3xl leading-none">
-              TTC<span className="text-[#86BC25] text-4xl">.</span>
-            </h1>
-          </Link>
+    <header className="sticky top-0 z-20 border-b border-line-section bg-[rgba(5,6,5,0.82)] backdrop-blur-[14px]">
+      <div className="container-page flex h-[72px] items-center justify-between gap-6">
+        <Link href="/" onClick={closeMenu} className="flex items-baseline gap-2.5 text-ink">
+          <span className="text-2xl font-bold tracking-[-0.02em]">
+            TTC<span className="text-accent">.</span>
+          </span>
+          <span className="hidden whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.08em] text-ink-subtle sm:inline">
+            Tax Transformation
+          </span>
+        </Link>
 
-          {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className={`text-sm uppercase tracking-wider transition-colors duration-200 ${
-                    pathname === href
-                      ? "text-[#86BC25] border-b border-[#86BC25] pb-0.5"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1.5 sm:flex">
+          {navLinks.map(({ href, label }) => (
+            <NavLink key={href} href={href} label={label} active={pathname === href} />
+          ))}
+          <ContactTrigger className="ml-3 whitespace-nowrap rounded-lg bg-accent px-4 py-[9px] text-sm font-semibold text-accent-on transition-colors hover:bg-accent-hover">
+            Request support
+          </ContactTrigger>
+        </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setNav(true)}
-            className="md:hidden text-gray-300 hover:text-white transition-colors"
-            aria-label="Open menu"
+        {/* Mobile menu toggle */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-line-input bg-surface-control text-ink-body hover:text-ink sm:hidden"
+        >
+          {menuOpen ? <LuX size={18} /> : <LuMenu size={18} />}
+        </button>
+      </div>
+
+      {menuOpen && (
+        <nav className="container-page flex flex-col gap-1 border-t border-line-section pb-5 pt-3 sm:hidden">
+          {navLinks.map(({ href, label }) => (
+            <NavLink key={href} href={href} label={label} active={pathname === href} onClick={closeMenu} />
+          ))}
+          <ContactTrigger
+            onClick={closeMenu}
+            className="mt-2 rounded-lg bg-accent px-4 py-[9px] text-sm font-semibold text-accent-on transition-colors hover:bg-accent-hover"
           >
-            <AiOutlineMenu size={24} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Drawer — outside <nav> to avoid backdrop-blur inheritance */}
-      {nav && (
-        <div className="fixed inset-0 z-[200] md:hidden">
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black/60"
-            onClick={() => setNav(false)}
-          />
-          {/* Drawer panel */}
-          <div className="absolute left-0 top-0 h-full w-72 bg-black border-r border-white/10 p-6 flex flex-col" style={{ isolation: "isolate" }}>
-            <div className="flex items-center justify-between mb-10">
-              <h1 className="text-white font-bold text-2xl leading-none">
-                TTC<span className="text-[#86BC25] text-3xl">.</span>
-              </h1>
-              <button
-                onClick={() => setNav(false)}
-                className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Close menu"
-              >
-                <AiOutlineClose size={22} />
-              </button>
-            </div>
-
-            <ul className="flex flex-col gap-1">
-              {navLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    onClick={() => setNav(false)}
-                    className={`block py-3 px-4 rounded-lg text-sm uppercase tracking-wider transition-colors duration-200 ${
-                      pathname === href
-                        ? "bg-[#86BC25]/10 text-[#86BC25]"
-                        : "text-gray-300 hover:bg-white/5 hover:text-white"
-                    }`}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-          </div>
-        </div>
+            Request support
+          </ContactTrigger>
+        </nav>
       )}
-    </>
+    </header>
   )
 }
 

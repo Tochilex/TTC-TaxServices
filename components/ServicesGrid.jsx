@@ -1,134 +1,110 @@
-import {
-  HiOutlineDocumentReport,
-  HiOutlineUserGroup,
-  HiOutlineCalculator,
-  HiOutlineChartBar,
-  HiOutlineDocumentText,
-  HiOutlineClipboardList,
-  HiOutlineChartPie,
-} from "react-icons/hi"
+"use client"
 
-const services = [
-  {
-    icon: <HiOutlineDocumentReport />,
-    title: "CBC Conversion Service",
-    description:
-      "Automates the conversion of Country-by-Country Reports (CbCR) into compliant XML formats required for OECD automatic exchange, reducing manual effort and ensuring regulatory accuracy.",
-    features: ["OECD XML format compliance", "Automated data mapping", "Error validation & flagging", "Multi-jurisdiction support"],
-    tag: "Compliance",
-  },
-  {
-    icon: <HiOutlineUserGroup />,
-    title: "Neptune Payroll",
-    description:
-      "A comprehensive HR payroll management solution that handles statutory deductions, employee records, and payroll computations with precision and ease.",
-    features: ["Statutory deductions", "Employee records", "Payslip generation", "Pension & tax integration"],
-    tag: "Payroll",
-    href: "https://neptune.deloitte.com.ng",
-  },
-  {
-    icon: <HiOutlineCalculator />,
-    title: "WHT & VAT Automation",
-    description:
-      "Streamlines the computation, filing, and remittance of Withholding Tax and Value Added Tax, ensuring full compliance with tax authority requirements.",
-    features: ["WHT computation & filing", "VAT return preparation", "Remittance schedules", "Audit-ready reports"],
-    tag: "Tax Automation",
-  },
-  {
-    icon: <HiOutlineChartBar />,
-    title: "Silverfin",
-    description:
-      "A cloud-based financial reporting and workflow platform that connects accounting data to enable seamless tax compliance and financial close processes.",
-    features: ["Cloud collaboration", "Financial templates", "Compliance checklists", "Real-time data sync"],
-    tag: "Reporting",
-    href: "https://silverfin.com/",
-  },
-  {
-    icon: <HiOutlineDocumentText />,
-    title: "E-Invoicing Implementation",
-    description:
-      "Guides businesses through the setup and integration of compliant e-invoicing systems, fully aligned with NRS requirements and international standards.",
-    features: ["NRS-compliant integration", "Invoice validation", "ERP system integration", "End-to-end support"],
-    tag: "E-Invoicing",
-  },
-  {
-    icon: <HiOutlineClipboardList />,
-    title: "WHT Receipt Generator",
-    description:
-      "Automatically generates accurate Withholding Tax receipts and documentation for remittances, providing a seamless audit trail and eliminating manual paperwork.",
-    features: ["Automated receipts", "WHT schedule tracking", "Bulk processing", "Exportable formats"],
-    tag: "WHT",
-  },
-  {
-    icon: <HiOutlineChartPie />,
-    title: "Interest Expense Analyser",
-    description:
-      "Cuts through the complexities of manual interest analysis by computing and evaluating deductible interest expenses against thin capitalisation rules. Recommended for financial institutions.",
-    features: ["Thin capitalisation analysis", "Deductible interest computation", "Financial institution support", "Regulatory compliance checks"],
-    tag: "Analytics",
-  },
-]
+import { useState } from "react"
+import { LuSearch } from "react-icons/lu"
+import ServiceCard from "@/components/ServiceCard"
+import { ContactTrigger } from "@/components/ContactModal"
+import { services, formatNum } from "@/data/services"
+
+const ALL = "All"
+const categories = [ALL, ...new Set(services.map((s) => s.tag))]
+const countFor = (cat) => (cat === ALL ? services.length : services.filter((s) => s.tag === cat).length)
+
+const matchesQuery = (s, q) => [s.name, s.desc, s.tag, ...s.features].join(" ").toLowerCase().includes(q)
 
 const ServicesGrid = () => {
+  const [category, setCategory] = useState(ALL)
+  const [query, setQuery] = useState("")
+
+  const q = query.trim().toLowerCase()
+  const visible = services.filter((s) => (category === ALL || s.tag === category) && (!q || matchesQuery(s, q)))
+  const showRequestCard = visible.length > 0 && category === ALL && !q
+
+  const reset = () => {
+    setCategory(ALL)
+    setQuery("")
+  }
+
   return (
-    <section className="py-12 bg-black">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service, i) => {
-            const cardContent = (
-              <>
-                {/* Top glow line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#86BC25]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Watermark number */}
-                <span className="absolute bottom-3 right-5 text-[64px] font-black text-white/[0.03] select-none tabular-nums leading-none pointer-events-none">
-                  {String(i + 1).padStart(2, "0")}
+    <section className="container-page pb-28 pt-10">
+      {/* Filter bar — sticks directly below the 72px header */}
+      <div className="sticky top-[72px] z-10 mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-line-section bg-[rgba(5,6,5,0.9)] py-4 backdrop-blur-[14px]">
+        <div
+          role="tablist"
+          aria-label="Service categories"
+          className="scrollbar-none flex max-w-full gap-0.5 overflow-x-auto rounded-xl border border-line-card bg-surface-control p-1"
+        >
+          {categories.map((cat) => {
+            const active = cat === category
+            return (
+              <button
+                key={cat}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setCategory(cat)}
+                className={`flex h-[34px] flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium transition-colors ${
+                  active ? "bg-[#151B10] text-ink shadow-[inset_0_0_0_1px_#2E3A22]" : "text-ink-muted hover:text-ink"
+                }`}
+              >
+                {cat}
+                <span
+                  className={`inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-[5px] px-[5px] font-mono text-[11px] ${
+                    active ? "bg-accent text-accent-on" : "bg-[#141811] text-ink-subtle"
+                  }`}
+                >
+                  {countFor(cat)}
                 </span>
-
-                {/* Header row */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-xl">
-                    {service.icon}
-                  </div>
-                  <span className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-[#86BC25]/10 text-[#86BC25] border border-[#86BC25]/20">
-                    {service.tag}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-white font-semibold text-base mb-2">{service.title}</h3>
-
-                {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
-                  {service.description}
-                </p>
-
-                {/* Features */}
-                <div className="space-y-1.5">
-                  {service.features.map((f, j) => (
-                    <div key={j} className="flex items-center gap-2 text-xs text-gray-500">
-                      <span className="w-1 h-1 rounded-full bg-[#86BC25]/40 flex-shrink-0" />
-                      {f}
-                    </div>
-                  ))}
-                </div>
-              </>
-            )
-
-            const className = "group relative flex flex-col rounded-2xl bg-black border border-white/[0.07] p-6 hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300 overflow-hidden h-full"
-
-            return service.href ? (
-              <a key={i} href={service.href} target="_blank" rel="noopener noreferrer" className={className}>
-                {cardContent}
-              </a>
-            ) : (
-              <div key={i} className={className}>
-                {cardContent}
-              </div>
+              </button>
             )
           })}
         </div>
+
+        <label className="flex h-10 min-w-[min(100%,280px)] items-center gap-2.5 rounded-[10px] border border-line-input bg-surface-control px-3.5">
+          <LuSearch size={15} strokeWidth={2} className="flex-shrink-0 text-ink-subtle" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search services or features"
+            aria-label="Search services or features"
+            className="min-w-0 flex-1 border-0 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
+          />
+        </label>
       </div>
+
+      {visible.length > 0 ? (
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,340px),1fr))] gap-5">
+          {visible.map((s, i) => (
+            <ServiceCard key={s.name} service={s} num={formatNum(i)} />
+          ))}
+
+          {showRequestCard && (
+            <ContactTrigger className="flex min-h-[320px] flex-col justify-between gap-6 rounded-[18px] border border-dashed border-[#2E3A22] bg-transparent p-7 text-left text-ink transition-colors duration-200 hover:border-accent hover:bg-[#0A0D08]">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-dashed border-line-hover text-xl text-accent">
+                +
+              </span>
+              <span className="flex flex-col gap-2.5">
+                <span className="text-[22px] font-semibold tracking-[-0.02em]">Need something else?</span>
+                <span className="text-[15px] leading-[1.6] text-ink-body">Tell us about a process you&apos;d like automated.
+                </span>
+              </span>
+              <span className="text-sm font-medium text-accent">Suggest a service →</span>
+            </ContactTrigger>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-3 rounded-[18px] border border-line-card px-6 py-16 text-center">
+          <span className="text-lg font-semibold">No services match “{query}”</span>
+          <button
+            type="button"
+            onClick={reset}
+            className="rounded-lg border border-[#2A3122] bg-[#0B0D09] px-4 py-2.5 text-sm text-ink transition-colors hover:border-[#4A5A38]"
+          >
+            Clear filters
+          </button>
+        </div>
+      )}
     </section>
   )
 }

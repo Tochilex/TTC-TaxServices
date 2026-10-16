@@ -1,38 +1,38 @@
-﻿const ServiceCard = ({ icon, title, description, tag, features = [] }) => {
-  return (
-    <div className="group relative bg-black border border-white/[0.07] rounded-xl p-4 hover:border-[#86BC25]/30 hover:bg-[#121212] transition-all duration-300 h-full">
-      <div className="absolute left-0 top-4 bottom-4 w-0.5 bg-[#86BC25] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+﻿import Link from "next/link"
 
-      {/* Icon + Tag row */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="w-9 h-9 rounded-lg bg-[#86BC25]/10 border border-[#86BC25]/20 flex items-center justify-center text-[#86BC25] text-lg">
-          {icon}
-        </div>
-        {tag && (
-          <span className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-[#86BC25]/10 text-[#86BC25] border border-[#86BC25]/20">
-            {tag}
-          </span>
-        )}
+const ServiceCard = ({ service, num, ctaLabel = "View service →" }) => {
+  const { name, tag, desc, features = [], url } = service
+
+  return (
+    <Link
+      href={url ?? "/services"}
+      className="flex flex-col gap-5 rounded-[18px] border border-line-card bg-surface-card p-7 text-ink transition-[border-color,transform,background-color] duration-200 hover:-translate-y-[3px] hover:border-line-hover hover:bg-[#0C1009]"
+    >
+      <div className="flex items-center justify-between">
+        <span className="tile h-10 w-10 font-mono text-xs">{num}</span>
+        <span className="rounded-full border border-line-tile bg-[#131B0C] px-2.5 py-[5px] text-xs font-medium text-accent-text">
+          {tag}
+        </span>
       </div>
 
-      {/* Title */}
-      <h3 className="text-white text-base font-semibold mb-2">{title}</h3>
+      <div className="flex flex-col gap-2.5">
+        <h3 className="m-0 text-[22px] font-semibold tracking-[-0.02em]">{name}</h3>
+        <p className="m-0 [text-wrap:pretty]text-[15px] leading-[1.6] text-ink-body">{desc}</p>
+      </div>
 
-      {/* Description */}
-      <p className="text-gray-400 text-sm leading-relaxed mb-3">{description}</p>
+      <div className="h-px bg-[#1A1F16]" />
 
-      {/* Features list */}
-      {features.length > 0 && (
-        <ul className="space-y-1.5">
-          {features.map((f, i) => (
-            <li key={i} className="flex items-center gap-2 text-xs text-gray-500">
-              <span className="w-1 h-1 rounded-full bg-[#86BC25]/60 flex-shrink-0" />
-              {f}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+        {features.map((f) => (
+          <span key={f} className="flex items-start gap-2 text-[13px] leading-[1.4] text-ink-strong">
+            <span className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full bg-accent" />
+            {f}
+          </span>
+        ))}
+      </div>
+
+      <span className="mt-auto pt-2 text-sm font-medium text-accent">{ctaLabel}</span>
+    </Link>
   )
 }
 

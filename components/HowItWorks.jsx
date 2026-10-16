@@ -1,52 +1,38 @@
 ﻿const steps = [
-  {
-    number: "01",
-    title: "Consult",
-    description:
-      "Tell us about your tax challenges and goals. We assess your current processes and recommend the right solution.",
-  },
-  {
-    number: "02",
-    title: "Onboard",
-    description:
-      "We configure and customise the solution for your business, ensuring seamless integration with your existing systems.",
-  },
-  {
-    number: "03",
-    title: "Go Live",
-    description:
-      "Your team starts using the tools with full support from our team. We monitor and refine as you scale.",
-  },
+  { num: "01", title: "Request", desc: "Reach out to the TTC team with your tax challenge or the service you need." },
+  { num: "02", title: "Assess", desc: "We review your current processes and recommend the right solution." },
+  { num: "03", title: "Implement", desc: "We configure the solution and integrate it with your existing systems." },
+  { num: "04", title: "Support", desc: "Your team goes live with ongoing support. We monitor and refine as needs change." },
 ]
 
 const HowItWorks = () => {
   return (
-    <section className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="text-[#86BC25] text-sm font-medium uppercase tracking-wider mb-3">
-            Process
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Getting Started is Simple
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            Our structured onboarding process ensures you&apos;re up and running quickly with
-            minimal disruption.
+    <section className="border-t border-line-section bg-surface-alt">
+      <div className="container-page flex flex-col gap-14 py-28">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex max-w-[620px] flex-col gap-4">
+            <span className="eyebrow">Process</span>
+            <h2 className="heading-2">Getting started is simple</h2>
+          </div>
+          <p className="m-0 max-w-[420px] text-[17px] leading-[1.55] text-ink-body">
+            Our structured onboarding process ensures you&apos;re up and running quickly with minimal disruption.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-10 left-[calc(16.67%+40px)] right-[calc(16.67%+40px)] h-px bg-[#86BC25]/30" />
-
-          {steps.map(({ number, title, description }, i) => (
-            <div key={i} className="relative text-center">
-              <div className="w-20 h-20 rounded-full bg-black border-2 border-[#86BC25]/40 flex items-center justify-center mx-auto mb-6 relative z-10">
-                <span className="text-[#86BC25] font-bold text-xl">{number}</span>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-5">
+          {steps.map((s) => (
+            <div
+              key={s.num}
+              className="flex flex-col gap-4 rounded-[18px] border border-line-card bg-surface-card px-7 py-8"
+            >
+              <div className="flex items-center gap-3.5">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent font-mono text-[13px] font-medium text-accent-on">
+                  {s.num}
+                </span>
+                <span className="h-px flex-1 bg-[linear-gradient(90deg,#3E5226,transparent)]" />
               </div>
-              <h3 className="text-white font-semibold text-xl mb-3">{title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+              <h3 className="m-0 mt-2 text-[22px] font-semibold tracking-[-0.02em]">{s.title}</h3>
+              <p className="m-0 text-[15px] leading-[1.6] text-ink-body [text-wrap:pretty]">{s.desc}</p>
             </div>
           ))}
         </div>

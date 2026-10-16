@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050605;color:#F2F4EF;font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#8CC63F;text-decoration:none}a:hover{color:#A8DB62}
+*{box-sizing:border-box}
+input::placeholder{color:#5D6656}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#050605;position:relative;overflow:hidden">
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(5,6,5,0.82);backdrop-filter:blur(14px);border-bottom:1px solid #161A14">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="TTC Home.dc.html" style="display:flex;align-items:baseline;gap:10px;color:#F2F4EF">
+      <span style="font-size:24px;font-weight:700;letter-spacing:-0.02em">TTC<span style="color:#8CC63F">.</span></span>
+      <span style="font-family:'Geist Mono',monospace;font-size:11px;color:#6E7768;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">Tax Transformation</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:6px">
+      <a href="TTC Home.dc.html" style="padding:8px 14px;border-radius:8px;white-space:nowrap;font-size:14px;font-weight:500;color:#A3AB9C" style-hover="color:#F2F4EF;background:#0E110C">Home</a>
+      <a href="#" style="padding:8px 14px;border-radius:8px;white-space:nowrap;font-size:14px;font-weight:500;color:#F2F4EF;background:#12160F;display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:#8CC63F"></span>Services</a>
+      <a href="#" onClick="{{ openContact }}" style="margin-left:12px;white-space:nowrap;padding:9px 16px;border-radius:8px;font-size:14px;font-weight:600;color:#0A0D07;background:#8CC63F" style-hover="background:#A1D85A;color:#0A0D07">Request support</a>
+    </nav>
+  </div>
+</header>
+
+<section data-screen-label="Services header" style="position:relative;border-bottom:1px solid #161A14">
+  <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#11150F 1px,transparent 1px),linear-gradient(90deg,#11150F 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 90% at 20% 30%,#000 15%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 60% 90% at 20% 30%,#000 15%,transparent 75%)"></div>
+  </sc-if>
+  <div style="position:absolute;width:640px;height:640px;left:-160px;top:-320px;background:radial-gradient(circle,rgba(140,198,63,0.15),transparent 62%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:56px 32px 64px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#6E7768">
+      <a href="TTC Home.dc.html" style="color:#8A9383" style-hover="color:#F2F4EF">Home</a><span>/</span><span style="color:#B9D98F">Services</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+        <h1 style="margin:0;font-size:clamp(44px,5.6vw,72px);line-height:1.02;letter-spacing:-0.035em;font-weight:600">Our services</h1>
+        <p style="margin:0;font-size:19px;line-height:1.55;color:#C9CFC3;text-wrap:pretty">End-to-end digital tax solutions designed to simplify compliance, automate workflows, and empower tax functions.</p>
+      </div>
+      <div style="display:flex;gap:40px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:40px;font-weight:600;letter-spacing:-0.03em">{{ totalCount }}</span>
+          <span style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6E7768">SERVICES</span>
+        </div>
+        <div style="width:1px;background:#1E241A"></div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:40px;font-weight:600;letter-spacing:-0.03em">{{ categoryCount }}</span>
+          <span style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6E7768">CATEGORIES</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Catalogue" style="max-width:1240px;margin:0 auto;padding:40px 32px 112px">
+  <div style="position:sticky;top:72px;z-index:10;padding:16px 0;margin-bottom:24px;background:rgba(5,6,5,0.9);backdrop-filter:blur(14px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #161A14">
+    <div style="display:flex;gap:2px;padding:4px;max-width:100%;overflow-x:auto;border:1px solid #1C2118;border-radius:12px;background:#0A0C09;scrollbar-width:none">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ f.onClick }}" style="{{ f.style }}" style-hover="color:#F2F4EF">{{ f.label }}<span style="{{ f.countStyle }}">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+    <label style="display:flex;align-items:center;gap:10px;height:40px;padding:0 14px;min-width:min(100%,280px);border:1px solid #232A1E;border-radius:10px;background:#0A0C09">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6E7768" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <input value="{{ query }}" onChange="{{ onSearch }}" placeholder="Search services or features" style="flex:1;min-width:0;background:transparent;border:0;outline:none;color:#F2F4EF;font:inherit;font-size:14px">
+    </label>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:20px">
+    <sc-for list="{{ visible }}" as="t" hint-placeholder-count="7">
+      <a href="#" style="display:flex;flex-direction:column;gap:20px;padding:28px;border:1px solid #1C2118;border-radius:18px;background:#090B08;color:#F2F4EF;transition:border-color .2s,transform .2s,background .2s" style-hover="border-color:#3E5226;background:#0C1009;transform:translateY(-3px);color:#F2F4EF">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="width:40px;height:40px;border-radius:10px;border:1px solid #26321C;background:#0F160A;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:12px;color:#8CC63F">{{ t.num }}</span>
+          <span style="font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:#131B0C;border:1px solid #26321C;color:#A8D46A">{{ t.tag }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.02em">{{ t.name }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#A3AB9C;text-wrap:pretty">{{ t.desc }}</p>
+        </div>
+        <div style="height:1px;background:#1A1F16"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px">
+          <sc-for list="{{ t.features }}" as="ft" hint-placeholder-count="4">
+            <span style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.4;color:#C9CFC3"><span style="width:4px;height:4px;margin-top:7px;border-radius:50%;background:#8CC63F;flex-shrink:0"></span>{{ ft }}</span>
+          </sc-for>
+        </div>
+        <div style="margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:14px;font-weight:500;color:#8CC63F">View service →</span>
+        </div>
+      </a>
+    </sc-for>
+
+    <sc-if value="{{ showRequestCard }}" hint-placeholder-val="{{ true }}">
+      <a href="#" onClick="{{ openContact }}" style="display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:28px;border:1px dashed #2E3A22;border-radius:18px;background:transparent;color:#F2F4EF;min-height:320px" style-hover="border-color:#8CC63F;background:#0A0D08;color:#F2F4EF">
+        <span style="width:40px;height:40px;border-radius:10px;border:1px dashed #3E5226;display:flex;align-items:center;justify-content:center;font-size:20px;color:#8CC63F">+</span>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.02em">Need something else?</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#A3AB9C">Tell us about a process you'd like automated.</p>
+        </div>
+        <span style="font-size:14px;font-weight:500;color:#8CC63F">Suggest a service →</span>
+      </a>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:64px 24px;border:1px solid #1C2118;border-radius:18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+      <span style="font-size:18px;font-weight:600">No services match “{{ query }}”</span>
+      <button onClick="{{ reset }}" style="padding:10px 16px;border-radius:8px;border:1px solid #2A3122;background:#0B0D09;color:#F2F4EF;font:inherit;font-size:14px;cursor:pointer">Clear filters</button>
+    </div>
+  </sc-if>
+</section>
+
+<section data-screen-label="Process" style="border-top:1px solid #161A14;background:#070907">
+  <div style="max-width:1240px;margin:0 auto;padding:112px 32px;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:620px">
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:0.12em;color:#8CC63F">PROCESS</span>
+        <h2 style="margin:0;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600">Getting started is simple</h2>
+      </div>
+      <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:#A3AB9C">Our structured onboarding process ensures you're up and running quickly with minimal disruption.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="position:relative;display:flex;flex-direction:column;gap:16px;padding:32px 28px;border:1px solid #1C2118;border-radius:18px;background:#090B08">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="width:44px;height:44px;border-radius:50%;background:#8CC63F;color:#0A0D07;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:13px;font-weight:500">{{ s.num }}</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,#3E5226,transparent)"></span>
+          </div>
+          <h3 style="margin:8px 0 0;font-size:22px;font-weight:600;letter-spacing:-0.02em">{{ s.title }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#A3AB9C;text-wrap:pretty">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="request" style="max-width:1240px;margin:0 auto;padding:112px 32px">
+  <div style="position:relative;overflow:hidden;border:1px solid #2A3A1B;border-radius:24px;padding:56px;background:#0B1008;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px">
+    <div style="position:absolute;right:-120px;top:-200px;width:520px;height:520px;background:radial-gradient(circle,rgba(140,198,63,0.22),transparent 65%);pointer-events:none"></div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:12px;max-width:600px">
+      <h2 style="margin:0;font-size:clamp(28px,3vw,40px);letter-spacing:-0.03em;font-weight:600;line-height:1.1">Not sure which service fits?</h2>
+      <p style="margin:0;font-size:17px;line-height:1.55;color:#B4BCAD">Book a consultation and we'll recommend the right solution for your team.</p>
+    </div>
+    <a href="#" onClick="{{ openContact }}" style="position:relative;white-space:nowrap;padding:14px 22px;border-radius:10px;background:#8CC63F;color:#0A0D07;font-weight:600;font-size:15px" style-hover="background:#A1D85A;color:#0A0D07">Book a consultation →</a>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #161A14">
+  <div style="max-width:1240px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:#6E7768">
+    <span>© 2026 Deloitte TTC Services</span>
+    <span>Built by Deloitte TTC unit</span>
+  </div>
+</footer>
+<sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeContact }}" style="position:fixed;inset:0;z-index:100;background:rgba(2,3,2,0.72);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div onClick="{{ stop }}" role="dialog" style="position:relative;overflow:hidden;width:100%;max-width:520px;border:1px solid #2A3A1B;border-radius:20px;background:#0B1008;padding:40px;display:flex;flex-direction:column;gap:20px;box-shadow:0 40px 120px -20px #000">
+      <div style="position:absolute;right:-140px;top:-180px;width:420px;height:420px;background:radial-gradient(circle,rgba(140,198,63,0.22),transparent 65%);pointer-events:none"></div>
+      <button onClick="{{ closeContact }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:8px;border:1px solid #232A1E;background:#0A0C09;color:#A3AB9C;font:inherit;font-size:18px;cursor:pointer" style-hover="color:#F2F4EF;border-color:#3E5226">×</button>
+      <span style="position:relative;width:48px;height:48px;border-radius:12px;border:1px solid #26321C;background:#0F160A;display:flex;align-items:center;justify-content:center;color:#8CC63F">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+      </span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:0.12em;color:#8CC63F">CONSULTATION &amp; SUPPORT</span>
+        <h2 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:600">Talk to the TTC team</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#B4BCAD;text-wrap:pretty">Contact or email the Tax Transformation Tech (TTC) team directly for consultations and support. We are always willing to assist.</p>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+        <a href="mailto:" style="white-space:nowrap;padding:13px 20px;border-radius:10px;background:#8CC63F;color:#0A0D07;font-weight:600;font-size:15px" style-hover="background:#A1D85A;color:#0A0D07">Email the TTC team →</a>
+        <a href="#" onClick="{{ closeContact }}" style="white-space:nowrap;padding:13px 20px;border-radius:10px;border:1px solid #3A4A2A;color:#F2F4EF;font-weight:500;font-size:15px" style-hover="border-color:#8CC63F;color:#F2F4EF">Maybe later</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SERVICES = [
+  { name: 'CBC Conversion Service', tag: 'Compliance', desc: 'Automates the conversion of Country-by-Country Reports (CbCR) into compliant XML formats required for OECD automatic exchange.', features: ['OECD XML format compliance', 'Automated data mapping', 'Error validation & flagging', 'Multi-jurisdiction support'] },
+  { name: 'Neptune Payroll', tag: 'Payroll', desc: 'A comprehensive HR payroll management solution that handles statutory deductions, employee records, and payroll computations.', features: ['Statutory deductions', 'Employee records', 'Payslip generation', 'Pension & tax integration'] },
+  { name: 'WHT & VAT Automation', tag: 'Tax Automation', desc: 'Streamlines the computation, filing, and remittance of Withholding Tax and Value Added Tax, ensuring full compliance with tax authorities.', features: ['WHT computation & filing', 'VAT return preparation', 'Remittance schedules', 'Audit-ready reports'] },
+  { name: 'Silverfin', tag: 'Reporting', desc: 'A cloud-based financial reporting and workflow platform that connects accounting data to enable seamless tax reporting.', features: ['Cloud collaboration', 'Financial templates', 'Compliance checklists', 'Real-time data sync'] },
+  { name: 'E-Invoicing Implementation', tag: 'E-Invoicing', desc: 'Guides businesses through the setup and integration of compliant e-invoicing systems, fully aligned with NRS requirements.', features: ['NRS-compliant integration', 'Invoice validation', 'ERP system integration', 'End-to-end support'] },
+  { name: 'WHT Receipt Generator', tag: 'WHT', desc: 'Automatically generates accurate Withholding Tax receipts and documentation for remittances, providing a clear audit trail.', features: ['Automated receipts', 'WHT schedule tracking', 'Bulk processing', 'Exportable formats'] },
+  { name: 'Interest Expense Analyser', tag: 'Analytics', desc: 'Cuts through the complexities of manual interest analysis by computing and evaluating deductible interest expenses.', features: ['Deductible interest computation', 'Financial institution support'] }
+].map((s, i) => ({ ...s, num: String(i + 1).padStart(2, '0') }));
+
+const chip = on => ({ display: 'flex', alignItems: 'center', gap: 8, height: 34, padding: '0 12px', borderRadius: 8, border: 0, flexShrink: 0, font: 'inherit', fontSize: 13, fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', boxShadow: on ? 'inset 0 0 0 1px #2E3A22' : 'none', background: on ? '#151B10' : 'transparent', color: on ? '#F2F4EF' : '#8A9383' });
+const countStyle = on => ({ fontFamily: "'Geist Mono', monospace", fontSize: 11, minWidth: 18, height: 18, padding: '0 5px', borderRadius: 5, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: on ? '#8CC63F' : '#141811', color: on ? '#0A0D07' : '#6E7768' });
+
+class Component extends DCLogic {
+  state = { cat: 'All', query: '', contactOpen: false };
+  contactVals() {
+    return {
+      contactOpen: this.state.contactOpen,
+      openContact: e => { e && e.preventDefault(); this.setState({ contactOpen: true }); },
+      closeContact: e => { e && e.preventDefault(); this.setState({ contactOpen: false }); },
+      stop: e => e.stopPropagation()
+    };
+  }
+  renderVals() {
+    const { cat, query } = this.state;
+    const cats = ['All', ...Array.from(new Set(SERVICES.map(s => s.tag)))];
+    const q = query.trim().toLowerCase();
+    const visible = SERVICES.filter(s => (cat === 'All' || s.tag === cat) &&
+      (!q || [s.name, s.desc, s.tag, ...s.features].join(' ').toLowerCase().includes(q)));
+    return {
+      ...this.contactVals(),
+      showGrid: this.props.showGrid ?? true,
+      totalCount: String(SERVICES.length).padStart(2, '0'),
+      categoryCount: String(cats.length - 1).padStart(2, '0'),
+      filters: cats.map(c => ({ label: c, count: c === 'All' ? SERVICES.length : SERVICES.filter(s => s.tag === c).length, style: chip(c === cat), countStyle: countStyle(c === cat), onClick: () => this.setState({ cat: c }) })),
+      query,
+      onSearch: e => this.setState({ query: e.target.value }),
+      visible,
+      isEmpty: visible.length === 0,
+      showRequestCard: visible.length > 0 && cat === 'All' && !q,
+      reset: () => this.setState({ cat: 'All', query: '' }),
+      steps: [
+        { num: '01', title: 'Request', desc: 'Reach out to the TTC team with your tax challenge or the service you need.' },
+        { num: '02', title: 'Assess', desc: 'We review your current processes and recommend the right solution.' },
+        { num: '03', title: 'Implement', desc: 'We configure the solution and integrate it with your existing systems.' },
+        { num: '04', title: 'Support', desc: 'Your team goes live with ongoing support. We monitor and refine as needs change.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

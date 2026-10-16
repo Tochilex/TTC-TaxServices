@@ -1,17 +1,23 @@
-import PageHeader from "@/components/PageHeader"
+import ServicesHeader from "@/components/ServicesHeader"
 import ServicesGrid from "@/components/ServicesGrid"
 import HowItWorks from "@/components/HowItWorks"
+import CTABanner from "@/components/CTABanner"
+
+export const metadata = {
+  title: 'Services | TTC Services',
+}
 
 export default function Services() {
   return (
     <div>
-      <PageHeader
-        title="Our Services"
-        description="End-to-end digital tax solutions designed to simplify compliance, automate workflows, and empower tax functions."
-        breadcrumb="Services"
-      />
+      <ServicesHeader />
       <ServicesGrid />
       <HowItWorks />
+      <CTABanner
+        title="Not sure which service fits?"
+        body="Book a consultation and we'll recommend the right solution for your team."
+        primaryLabel="Book a consultation →"
+      />
     </div>
   )
 }
